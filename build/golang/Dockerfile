@@ -8,6 +8,7 @@ WORKDIR ${workdir}
 
 RUN apt-get update && \
     apt-get -qq install -y --no-install-recommends \
+    vim \
     tini  \
     curl \
     git \
