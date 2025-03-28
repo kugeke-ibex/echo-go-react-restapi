@@ -7,7 +7,7 @@ services:
     container_name: ${DB_CONTAINER_NAME}
     volumes:
       - type: volume
-        source: db-store
+        source: golang_echo_db_store
         target: /var/lib/postgresql/data
         consistency: cached
       - type: bind
@@ -36,7 +36,7 @@ services:
         target: "/go/src"
         consistency: cached
       - type: volume
-        source: gohome
+        source: golang_echo_home
         target: /home/devcontainer/go
         consistency: cached
     environment:
@@ -48,5 +48,5 @@ services:
     network_mode: service:db
 
 volumes:
-  gohome:
-  db-store:
+  golang_echo_home:
+  golang_echo_db_store:
