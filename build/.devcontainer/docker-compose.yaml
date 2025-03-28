@@ -1,29 +1,29 @@
 version: '3.8'
 
 services:
-  # db:
-  #   image: postgres:17.1-alpine
-  #   restart: always
-  #   container_name: postgres
-  #   volumes:
-  #     - type: volume
-  #       source: db-store
-  #       target: /var/lib/postgresql/data
-  #       consistency: cached
-  #     - type: bind
-  #       source: "./db/init"
-  #       target: "/docker-entrypoint-initdb.d"
-  #       consistency: cached
-  #   environment:
-  #     TZ: ${TZ}
-  #     LANG: ${LANG}
-  #     LC_ALL: ${LC_ALL}
-  #     POSTGRES_USER: ${POSTGRES_USER}
-  #     POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-  #     POSTGRES_DB: ${POSTGRES_DB}
-  #     PORT: ${DB_PORT}
-  #   ports:
-  #     - "${DB_PORT}:${DB_PORT}"
+  db:
+    image: postgres:17.1-alpine
+    restart: always
+    container_name: ${DB_CONTAINER_NAME}
+    volumes:
+      - type: volume
+        source: db-store
+        target: /var/lib/postgresql/data
+        consistency: cached
+      - type: bind
+        source: "./db/init"
+        target: "/docker-entrypoint-initdb.d"
+        consistency: cached
+    environment:
+      TZ: ${TZ}
+      LANG: ${LANG}
+      LC_ALL: ${LC_ALL}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+      PORT: ${DB_PORT}
+    ports:
+      - "${DB_PORT}:${DB_PORT}"
 
   golang_echo:
     container_name: golang_echo
@@ -45,8 +45,8 @@ services:
       /bin/sh -c "while sleep 1000; do :; done"
       /bin/bash
     tty: true
-    # network_mode: service:db
+    network_mode: service:db
 
 volumes:
   gohome:
-  # db-store:
+  db-store:
