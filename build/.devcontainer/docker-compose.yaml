@@ -40,7 +40,7 @@ services:
         target: /home/devcontainer/go
         consistency: cached
     environment:
-      DSN: host=${DB_CONTAINER_NAME} user=${POSTGRES_USER} password=${POSTGRES_PASSWORD} dbname=${POSTGRES_DB} search_path=${POSTGRES_SCHEMA} port=${DB_PORT} sslmode=disable
+      POSTGRES_URL: "postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${DB_CONTAINER_NAME}:${DB_PORT}/${POSTGRES_DB}"
     command:
       /bin/sh -c "while sleep 1000; do :; done"
       /bin/bash
