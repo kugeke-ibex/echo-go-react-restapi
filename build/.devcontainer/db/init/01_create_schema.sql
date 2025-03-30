@@ -1,8 +1,8 @@
 -- DB作成
-CREATE DATABASE echo_go_react_restapi;
+CREATE DATABASE echo_go_react_rest_api;
 
 -- 作成したDBへ切り替え
-\c echo_go_react_restapi
+\c echo_go_react_rest_api
 
 -- スキーマ作成
 CREATE SCHEMA IF NOT EXISTS public;
