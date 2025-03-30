@@ -35,12 +35,16 @@ services:
         source: "../../"
         target: "/go/src"
         consistency: cached
+      - type: bind
+        source: "./.env"
+        target: "/go/src/.env"
+        consistency: cached
       - type: volume
         source: golang_echo_home
         target: /home/devcontainer/go
         consistency: cached
     environment:
-      POSTGRES_URL: "postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${DB_CONTAINER_NAME}:${DB_PORT}/${POSTGRES_DB}"
+      POSTGRES_DSN: host=${DB_CONTAINER_NAME} user=${POSTGRES_USER} password=${POSTGRES_PASSWORD} dbname=${POSTGRES_DB} search_path=${POSTGRES_SCHEMA} port=5432 sslmode=disable TimeZone=Asia/Tokyo
     command:
       /bin/sh -c "while sleep 1000; do :; done"
       /bin/bash

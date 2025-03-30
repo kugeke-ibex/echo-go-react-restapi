@@ -18,7 +18,7 @@ func NewDB() *gorm.DB {
 		}
 	}
 
-	db, err := gorm.Open(postgres.Open(os.Getenv("POSTGRES_URL")), &gorm.Config{})
+	db, err := gorm.Open(postgres.Open(os.Getenv("POSTGRES_DSN")), &gorm.Config{})
 	if err != nil {
 		log.Fatalln(err)
 	}
