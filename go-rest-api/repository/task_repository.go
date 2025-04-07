@@ -10,7 +10,7 @@ import (
 
 
 type ITaskRepository interface {
-	GetTask(tasks *[]model.Task, userId uint) error
+	GetAllTasks(tasks *[]model.Task, userId uint) error
 	GetTaskById(task *model.Task, userId uint, taskId uint) error
 	CreateTask(task *model.Task) error
 	UpdateTask(task *model.Task, userId uint, taskId uint) error
@@ -26,7 +26,7 @@ func NewTaskRepository(db *gorm.DB) ITaskRepository {
 }
 
 
-func (tr *taskRepository) GetTask(tasks *[]model.Task, userId uint) error {
+func (tr *taskRepository) GetAllTasks(tasks *[]model.Task, userId uint) error {
 	if err := tr.db.Joins("User").Where("user_id = ?", userId).Order("created_at desc").Find(tasks).Error; err != nil {
 		return err
 	}
