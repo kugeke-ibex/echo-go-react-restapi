@@ -4,6 +4,7 @@ import (
 	"go-rest-api/controller"
 	"os"
 
+	"github.com/golang-jwt/jwt/v5"
 	echojwt "github.com/labstack/echo-jwt/v4"
 	"github.com/labstack/echo/v4"
 )
@@ -19,6 +20,9 @@ func NewRouter(uc controller.IUserController, tc controller.ITaskController) *ec
 	t.Use(echojwt.WithConfig(echojwt.Config{
 		SigningKey: []byte(os.Getenv("SECRET")),
 		TokenLookup: "cookie:token",
+		NewClaimsFunc: func(c echo.Context) jwt.Claims {
+			return jwt.MapClaims{}
+		},
 	}))
 
 	t.GET("", tc.GetAllTasks)
