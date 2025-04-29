@@ -11,7 +11,7 @@ services:
         target: /var/lib/postgresql/data
         consistency: cached
       - type: bind
-        source: "./db/init"
+        source: "./backend/db/init"
         target: "/docker-entrypoint-initdb.d"
         consistency: cached
     environment:
@@ -25,14 +25,14 @@ services:
     ports:
       - "${DB_PORT}:5432"
 
-  golang_echo:
-    container_name: golang_echo
+  backend:
+    container_name: golang_echo_backend
     build:
       context: .
-      dockerfile: ../golang/Dockerfile
+      dockerfile: ./backend/docker/Dockerfile
     volumes:
       - type: bind
-        source: "../../"
+        source: "./"
         target: "/go/src"
         consistency: cached
       - type: bind
@@ -51,6 +51,28 @@ services:
     tty: true
     network_mode: service:db
 
+  frontend:
+    container_name: golang_echo_frontend
+    build:
+      context: .
+      dockerfile: ./frontend/docker/Dockerfile
+    volumes:
+      - type: bind
+        source: "./frontend/"
+        target: "/app"
+        consistency: cached
+      - type: bind
+        source: "./.env"
+        target: "/app/.env"
+        consistency: cached
+      - type: volume
+        source: golang_echo_frontend_node_modules
+        target: /app/node_modules
+        consistency: cached
+    ports:
+      - "${FE_PORT}:3000"
+
 volumes:
   golang_echo_home:
   golang_echo_db_store:
+  golang_echo_frontend_node_modules:

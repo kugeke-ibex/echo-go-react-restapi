@@ -1,0 +1,104 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/docker-existing-docker-compose
+{
+    "name": "${localWorkspaceFolderBasename}",
+
+    // Update the 'dockerComposeFile' list if you have more compose files or use different names.
+    // The .devcontainer/docker-compose.yml file contains any overrides you need/want to make.
+    "dockerComposeFile": ["../../docker-compose.yaml"],
+
+    // The 'service' property is the name of the service for the container that VS Code should
+    // use. Update this value and .devcontainer/docker-compose.yml to the real service name.
+    "service": "frontend",
+
+    // The optional 'workspaceFolder' property is the path VS Code should open by default when
+    // connected. This is typically a file mount in .devcontainer/docker-compose.yml
+    "workspaceFolder": "/app",
+
+    "forwardPorts": [3000],
+
+    // Features to add to the dev container. More info: https://containers.dev/features.
+    // "features": {},
+
+    // Use 'forwardPorts' to make a list of ports inside the container available locally.
+    // "forwardPorts": [],
+
+    // Uncomment the next line if you want start specific services in your Docker Compose config.
+    // "runServices": [],
+
+    // Uncomment the next line if you want to keep your containers running after VS Code shuts down.
+    // "shutdownAction": "none",
+    // VSCodeを閉じたときの動作指定
+    "shutdownAction": "stopCompose",
+
+    // Uncomment the next line to run commands after the container is created.
+    // "postCreateCommand": "cat /etc/os-release",
+    //"postAttachCommand": "/bin/sh .devcontainer/postAttach.sh",
+
+    // Configure tool-specific properties.
+    // "customizations": {},
+
+    // Uncomment to connect as an existing user other than the container default. More info: https://aka.ms/dev-containers-non-root.
+    "remoteUser": "devcontainer",
+
+    // Configure tool-specific properties.
+    "customizations": {
+        // Configure properties specific to VS Code.
+        "vscode": {
+            // Add the IDs of extensions you want installed when the container is created.
+            "extensions": [
+                "mhutchie.git-graph",
+                "eamodio.gitlens",
+                "EditorConfig.EditorConfig",
+                "rangav.vscode-thunder-client",
+                "ms-vscode.live-server",
+                "Syler.sass-indented",
+                "streetsidesoftware.code-spell-checker",
+                "naumovs.color-highlight",
+                "burkeholland.simple-react-snippets",
+                "styled-components.vscode-styled-components",
+                "Gruntfuggly.todo-tree",
+                "christian-kohler.path-intellisense",
+                "dbaeumer.vscode-eslint",
+                "donjayamanne.githistory",
+                "esbenp.prettier-vscode",
+                "formulahendry.auto-rename-tag",
+                "MariusAlchimavicius.json-to-ts",
+                "oderwat.indent-rainbow",
+                "stylelint.vscode-stylelint",
+                "VisualStudioExptTeam.vscodeintellicode",
+                "vscode-icons-team.vscode-icons",
+                "wix.vscode-import-cost"
+            ],
+            // VSCodeの設定を記述 .vscodeフォルダの代わりになる（らしい）
+            "settings": {
+                "terminal.integrated.defaultProfile.linux": "bash",
+                "stylelint.validate": ["css", "scss"],
+                "scss.validate": false,
+                "less.validate": false,
+                "css.validate": false,
+                "editor.formatOnSave": true,
+                "editor.defaultFormatter": "esbenp.prettier-vscode",
+                "editor.codeActionsOnSave": {
+                    "source.fixAll.eslint": true,
+                    "source.fixAll.stylelint": true
+                },
+                "editor.tabSize": 2,
+                "editor.wordWrap": "on",
+                "files.insertFinalNewline": true,
+                "files.trimTrailingWhitespace": true,
+                "npm.packageManager": "yarn",
+                "typescript.enablePromptUseWorkspaceTsdk": true,
+                // sticky scrollの設定
+                "editor.stickyScroll.enabled": true,
+                "editor.stickyScroll.maxLineCount": 5,
+                "workbench.colorCustomizations": {
+                    "editorStickyScroll.background": "#00708D",
+                    "editorStickyScrollHover.background": "#59A2B5"
+                },
+                // typescript で絶対パスで import する設定
+                "typescript.preferences.importModuleSpecifier": "non-relative"
+            }
+        }
+    }
+}

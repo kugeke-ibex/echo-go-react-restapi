@@ -13,6 +13,7 @@ import (
 func NewDB() *gorm.DB {
 	if os.Getenv("GO_ENV") == "dev" {
 		err := godotenv.Load()
+		log.Println("Loading .env file")
 		if err != nil {
 			log.Fatalln(err)
 		}
