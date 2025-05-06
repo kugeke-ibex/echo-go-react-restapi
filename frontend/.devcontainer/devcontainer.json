@@ -47,28 +47,19 @@
         "vscode": {
             // Add the IDs of extensions you want installed when the container is created.
             "extensions": [
-                "mhutchie.git-graph",
-                "eamodio.gitlens",
                 "EditorConfig.EditorConfig",
                 "rangav.vscode-thunder-client",
                 "ms-vscode.live-server",
                 "Syler.sass-indented",
-                "streetsidesoftware.code-spell-checker",
-                "naumovs.color-highlight",
                 "burkeholland.simple-react-snippets",
                 "styled-components.vscode-styled-components",
                 "Gruntfuggly.todo-tree",
-                "christian-kohler.path-intellisense",
                 "dbaeumer.vscode-eslint",
-                "donjayamanne.githistory",
                 "esbenp.prettier-vscode",
-                "formulahendry.auto-rename-tag",
                 "MariusAlchimavicius.json-to-ts",
-                "oderwat.indent-rainbow",
                 "stylelint.vscode-stylelint",
-                "VisualStudioExptTeam.vscodeintellicode",
-                "vscode-icons-team.vscode-icons",
-                "wix.vscode-import-cost"
+                "wix.vscode-import-cost",
+                "ms-playwright.playwright"
             ],
             // VSCodeの設定を記述 .vscodeフォルダの代わりになる（らしい）
             "settings": {

@@ -48,22 +48,13 @@
             "extensions": [
                 "golang.Go",
                 "rangav.vscode-thunder-client",
-                "mhutchie.git-graph",
-                "eamodio.gitlens",
                 "EditorConfig.EditorConfig",
-                "rangav.vscode-thunder-client",
                 "ms-vscode.live-server",
-                "streetsidesoftware.code-spell-checker",
-                "naumovs.color-highlight",
                 "Gruntfuggly.todo-tree",
-                "christian-kohler.path-intellisense",
                 "dbaeumer.vscode-eslint",
-                "donjayamanne.githistory",
                 "esbenp.prettier-vscode",
-                "oderwat.indent-rainbow",
                 "stylelint.vscode-stylelint",
                 "VisualStudioExptTeam.vscodeintellicode",
-                "vscode-icons-team.vscode-icons",
                 "wix.vscode-import-cost"
             ],
             // VSCodeの設定を記述 .vscodeフォルダの代わりになる（らしい）
