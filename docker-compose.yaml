@@ -58,7 +58,7 @@ services:
       dockerfile: ./frontend/docker/Dockerfile
     volumes:
       - type: bind
-        source: "./frontend/"
+        source: "./"
         target: "/app"
         consistency: cached
       - type: bind
