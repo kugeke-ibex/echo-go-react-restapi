@@ -71,6 +71,10 @@ services:
         consistency: cached
     ports:
       - "${FE_PORT}:3000"
+    command:
+      /bin/sh -c "while sleep 1000; do :; done"
+      /bin/bash
+    tty: true
 
 volumes:
   golang_echo_home:
