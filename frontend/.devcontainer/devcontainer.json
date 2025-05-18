@@ -48,6 +48,7 @@
             // Add the IDs of extensions you want installed when the container is created.
             "extensions": [
                 "EditorConfig.EditorConfig",
+                "dsznajder.es7-react-js-snippets",
                 "rangav.vscode-thunder-client",
                 "ms-vscode.live-server",
                 "Syler.sass-indented",
