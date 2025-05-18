@@ -63,11 +63,11 @@ services:
         consistency: cached
       - type: bind
         source: "./.env"
-        target: "/app/.env"
+        target: "/app/frontend/app/react-todo/.env"
         consistency: cached
       - type: volume
         source: golang_echo_frontend_node_modules
-        target: /app/node_modules
+        target: /app/frontend/app/react-todo/node_modules
         consistency: cached
     ports:
       - "${FE_PORT}:3000"
